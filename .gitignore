@@ -2,8 +2,7 @@
 .gradle
 /local.properties
 /.idea
-.idea
-
+.gitignore
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
@@ -11,3 +10,5 @@
 /captures
 .externalNativeBuild
 .cxx
+
+libs/
