@@ -6,12 +6,12 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainPresenterModule(var view: BookContact.View, var module: BookModel) {
+class MainPresenterModule(var view: BookContact.View) {
 
     @Provides
     fun provideBookContact(): BookContact.View = view
 
     @Provides
-    fun provideBookModule(): BookModel = module
+    fun provideBookModule(): BookModel = BookModel()
 
 }
