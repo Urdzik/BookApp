@@ -9,12 +9,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.bookapp.BookContact
 import com.example.bookapp.R
+import com.example.bookapp.dagger.DaggerAppComponent
+import com.example.bookapp.dagger.MainPresenterModule
+import com.example.bookapp.model.BookModel
 import com.example.bookapp.model.network.Book
 import com.example.bookapp.presentrer.BookPresenter
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import javax.inject.Inject
 
 class HomeFragment : Fragment(), BookContact.View {
     lateinit var adapter: MainAdapter
+    @Inject
     lateinit var presenter: BookPresenter
 
     override fun onCreateView(
@@ -22,7 +27,12 @@ class HomeFragment : Fragment(), BookContact.View {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        presenter = BookPresenter(this)
+
+        DaggerAppComponent.builder()
+            .mainPresenterModule(MainPresenterModule(this, BookModel()))
+            .build()
+            .inject(this)
+
         adapter = MainAdapter(view.context)
         view.rv.adapter = adapter
 

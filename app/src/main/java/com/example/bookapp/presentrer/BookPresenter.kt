@@ -5,12 +5,18 @@ import com.example.bookapp.BookContact
 import com.example.bookapp.model.BookModel
 import com.example.bookapp.model.network.Book
 import io.reactivex.disposables.Disposable
+import javax.inject.Inject
 
-class BookPresenter(private val bookView: BookContact.View) : BookContact.Model.OnFinishedListener,
+class BookPresenter @Inject constructor(private var bookView: BookContact.View) : BookContact.Model.OnFinishedListener,
     BookContact.Presenter {
 
-    private val model = BookModel()
+    private var model: BookModel
     lateinit var disposable: Disposable
+
+    init {
+        this.model = BookModel()
+    }
+
 
     override fun onFinished(book: List<Book>) {
         bookView.retrieveData(book)
