@@ -11,7 +11,6 @@ import com.example.bookapp.BookContact
 import com.example.bookapp.R
 import com.example.bookapp.dagger.DaggerAppComponent
 import com.example.bookapp.dagger.MainPresenterModule
-import com.example.bookapp.model.BookModel
 import com.example.bookapp.model.network.Book
 import com.example.bookapp.presentrer.BookPresenter
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -25,7 +24,7 @@ class HomeFragment : Fragment(), BookContact.View {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         DaggerAppComponent.builder()
