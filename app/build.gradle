@@ -61,6 +61,7 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.2.0'
 
     implementation "androidx.room:room-runtime:2.2.4"
+
     annotationProcessor "androidx.room:room-compiler:2.2.4"
     kapt "android.arch.persistence.room:compiler:2.2.3"
 
